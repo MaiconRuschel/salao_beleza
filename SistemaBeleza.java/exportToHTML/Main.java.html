@@ -1,0 +1,123 @@
+<html>
+<head>
+<title>Main.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #2aacb8;}
+.s4 { color: #6aab73;}
+.s5 { color: #7a7e85;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Main.java</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">time</span><span class="s2">.</span><span class="s1">LocalDateTime</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">ArrayList</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">Scanner</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">SistemaBeleza </span><span class="s2">{</span>
+    <span class="s0">private </span><span class="s1">ArrayList</span><span class="s2">&lt;</span><span class="s1">Cliente</span><span class="s2">&gt; </span><span class="s1">clientes </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ArrayList</span><span class="s2">&lt;&gt;();</span>
+    <span class="s0">private </span><span class="s1">ArrayList</span><span class="s2">&lt;</span><span class="s1">Servico</span><span class="s2">&gt; </span><span class="s1">servicos </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ArrayList</span><span class="s2">&lt;&gt;();</span>
+    <span class="s0">private </span><span class="s1">ArrayList</span><span class="s2">&lt;</span><span class="s1">Atendimento</span><span class="s2">&gt; </span><span class="s1">atendimentos </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ArrayList</span><span class="s2">&lt;&gt;();</span>
+    <span class="s0">private </span><span class="s1">Scanner scanner </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Scanner</span><span class="s2">(</span><span class="s1">System</span><span class="s2">.</span><span class="s1">in</span><span class="s2">);</span>
+
+    <span class="s0">public static void </span><span class="s1">main</span><span class="s2">(</span><span class="s1">String</span><span class="s2">[] </span><span class="s1">args</span><span class="s2">) {</span>
+        <span class="s1">SistemaBeleza sistema </span><span class="s2">= </span><span class="s0">new </span><span class="s1">SistemaBeleza</span><span class="s2">();</span>
+        <span class="s1">sistema</span><span class="s2">.</span><span class="s1">menu</span><span class="s2">();</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">menu</span><span class="s2">() {</span>
+        <span class="s0">int </span><span class="s1">opcao </span><span class="s2">= </span><span class="s3">0</span><span class="s2">;</span>
+        <span class="s0">do </span><span class="s2">{</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;1. Cadastrar Cliente&quot;</span><span class="s2">);</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;2. Cadastrar Serviço&quot;</span><span class="s2">);</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;3. Agendar Atendimento&quot;</span><span class="s2">);</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;4. Sair&quot;</span><span class="s2">);</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s4">&quot;Escolha uma opção: &quot;</span><span class="s2">);</span>
+            <span class="s1">opcao </span><span class="s2">= </span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextInt</span><span class="s2">();</span>
+            <span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextLine</span><span class="s2">(); </span><span class="s5">// Consumir nova linha</span>
+
+            <span class="s0">switch </span><span class="s2">(</span><span class="s1">opcao</span><span class="s2">) {</span>
+                <span class="s0">case </span><span class="s3">1</span><span class="s2">:</span>
+                    <span class="s1">cadastrarCliente</span><span class="s2">();</span>
+                    <span class="s0">break</span><span class="s2">;</span>
+                <span class="s0">case </span><span class="s3">2</span><span class="s2">:</span>
+                    <span class="s1">cadastrarServico</span><span class="s2">();</span>
+                    <span class="s0">break</span><span class="s2">;</span>
+                <span class="s0">case </span><span class="s3">3</span><span class="s2">:</span>
+                    <span class="s1">agendarAtendimento</span><span class="s2">();</span>
+                    <span class="s0">break</span><span class="s2">;</span>
+                <span class="s0">case </span><span class="s3">4</span><span class="s2">:</span>
+                    <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Saindo...&quot;</span><span class="s2">);</span>
+                    <span class="s0">break</span><span class="s2">;</span>
+                <span class="s0">default</span><span class="s2">:</span>
+                    <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Opção inválida.&quot;</span><span class="s2">);</span>
+            <span class="s2">}</span>
+        <span class="s2">} </span><span class="s0">while </span><span class="s2">(</span><span class="s1">opcao </span><span class="s2">!= </span><span class="s3">4</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">cadastrarCliente</span><span class="s2">() {</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s4">&quot;Nome: &quot;</span><span class="s2">);</span>
+        <span class="s1">String nome </span><span class="s2">= </span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextLine</span><span class="s2">();</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s4">&quot;E-mail: &quot;</span><span class="s2">);</span>
+        <span class="s1">String email </span><span class="s2">= </span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextLine</span><span class="s2">();</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s4">&quot;Telefone: &quot;</span><span class="s2">);</span>
+        <span class="s1">String telefone </span><span class="s2">= </span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextLine</span><span class="s2">();</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s4">&quot;Endereço: &quot;</span><span class="s2">);</span>
+        <span class="s1">String endereco </span><span class="s2">= </span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextLine</span><span class="s2">();</span>
+
+        <span class="s1">Cliente cliente </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Cliente</span><span class="s2">(</span><span class="s1">nome</span><span class="s2">, </span><span class="s1">email</span><span class="s2">, </span><span class="s1">telefone</span><span class="s2">, </span><span class="s1">endereco</span><span class="s2">);</span>
+        <span class="s1">clientes</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">cliente</span><span class="s2">);</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Cliente cadastrado com sucesso!&quot;</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">cadastrarServico</span><span class="s2">() {</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s4">&quot;Nome do Serviço: &quot;</span><span class="s2">);</span>
+        <span class="s1">String nome </span><span class="s2">= </span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextLine</span><span class="s2">();</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s4">&quot;Descrição: &quot;</span><span class="s2">);</span>
+        <span class="s1">String descricao </span><span class="s2">= </span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextLine</span><span class="s2">();</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s4">&quot;Valor: &quot;</span><span class="s2">);</span>
+        <span class="s0">double </span><span class="s1">valor </span><span class="s2">= </span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextDouble</span><span class="s2">();</span>
+        <span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextLine</span><span class="s2">(); </span><span class="s5">// Consumir nova linha</span>
+
+        <span class="s1">Servico servico </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Servico</span><span class="s2">(</span><span class="s1">nome</span><span class="s2">, </span><span class="s1">descricao</span><span class="s2">, </span><span class="s1">valor</span><span class="s2">);</span>
+        <span class="s1">servicos</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">servico</span><span class="s2">);</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Serviço cadastrado com sucesso!&quot;</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">agendarAtendimento</span><span class="s2">() {</span>
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">clientes</span><span class="s2">.</span><span class="s1">isEmpty</span><span class="s2">() || </span><span class="s1">servicos</span><span class="s2">.</span><span class="s1">isEmpty</span><span class="s2">()) {</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Cadastre clientes e serviços antes de agendar.&quot;</span><span class="s2">);</span>
+            <span class="s0">return</span><span class="s2">;</span>
+        <span class="s2">}</span>
+
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Escolha o cliente:&quot;</span><span class="s2">);</span>
+        <span class="s0">for </span><span class="s2">(</span><span class="s0">int </span><span class="s1">i </span><span class="s2">= </span><span class="s3">0</span><span class="s2">; </span><span class="s1">i </span><span class="s2">&lt; </span><span class="s1">clientes</span><span class="s2">.</span><span class="s1">size</span><span class="s2">(); </span><span class="s1">i</span><span class="s2">++) {</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">((</span><span class="s1">i </span><span class="s2">+ </span><span class="s3">1</span><span class="s2">) + </span><span class="s4">&quot;. &quot; </span><span class="s2">+ </span><span class="s1">clientes</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s1">i</span><span class="s2">).</span><span class="s1">getNome</span><span class="s2">());</span>
+        <span class="s2">}</span>
+        <span class="s0">int </span><span class="s1">clienteIndex </span><span class="s2">= </span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextInt</span><span class="s2">() - </span><span class="s3">1</span><span class="s2">;</span>
+
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Escolha o serviço:&quot;</span><span class="s2">);</span>
+        <span class="s0">for </span><span class="s2">(</span><span class="s0">int </span><span class="s1">i </span><span class="s2">= </span><span class="s3">0</span><span class="s2">; </span><span class="s1">i </span><span class="s2">&lt; </span><span class="s1">servicos</span><span class="s2">.</span><span class="s1">size</span><span class="s2">(); </span><span class="s1">i</span><span class="s2">++) {</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">((</span><span class="s1">i </span><span class="s2">+ </span><span class="s3">1</span><span class="s2">) + </span><span class="s4">&quot;. &quot; </span><span class="s2">+ </span><span class="s1">servicos</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s1">i</span><span class="s2">).</span><span class="s1">getNome</span><span class="s2">());</span>
+        <span class="s2">}</span>
+        <span class="s0">int </span><span class="s1">servicoIndex </span><span class="s2">= </span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextInt</span><span class="s2">() - </span><span class="s3">1</span><span class="s2">;</span>
+
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s4">&quot;Data e Hora (AAAA-MM-DDTHH:MM): &quot;</span><span class="s2">);</span>
+        <span class="s1">String dataHoraInput </span><span class="s2">= </span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">next</span><span class="s2">();</span>
+        <span class="s1">LocalDateTime dataHora </span><span class="s2">= </span><span class="s1">LocalDateTime</span><span class="s2">.</span><span class="s1">parse</span><span class="s2">(</span><span class="s1">dataHoraInput</span><span class="s2">);</span>
+
+        <span class="s1">Atendimento atendimento </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Atendimento</span><span class="s2">(</span><span class="s1">clientes</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s1">clienteIndex</span><span class="s2">), </span><span class="s1">servicos</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s1">servicoIndex</span><span class="s2">), </span><span class="s1">dataHora</span><span class="s2">);</span>
+        <span class="s1">atendimentos</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">atendimento</span><span class="s2">);</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Atendimento agendado com sucesso!&quot;</span><span class="s2">);</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>
