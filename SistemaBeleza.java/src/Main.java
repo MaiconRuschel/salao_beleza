@@ -1,15 +1,16 @@
 import java.time.LocalDateTime;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class SistemaBeleza {
+public class Main {
     private ArrayList<Cliente> clientes = new ArrayList<>();
     private ArrayList<Servico> servicos = new ArrayList<>();
     private ArrayList<Atendimento> atendimentos = new ArrayList<>();
     private Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        SistemaBeleza sistema = new SistemaBeleza();
+        Main sistema = new Main();  // Corrigido para "Main"
         sistema.menu();
     }
 
@@ -84,18 +85,31 @@ public class SistemaBeleza {
         }
         int clienteIndex = scanner.nextInt() - 1;
 
+        if (clienteIndex < 0 || clienteIndex >= clientes.size()) {
+            System.out.println("Cliente inválido.");
+            return;
+        }
+
         System.out.println("Escolha o serviço:");
         for (int i = 0; i < servicos.size(); i++) {
             System.out.println((i + 1) + ". " + servicos.get(i).getNome());
         }
         int servicoIndex = scanner.nextInt() - 1;
 
+        if (servicoIndex < 0 || servicoIndex >= servicos.size()) {
+            System.out.println("Serviço inválido.");
+            return;
+        }
+
         System.out.print("Data e Hora (AAAA-MM-DDTHH:MM): ");
         String dataHoraInput = scanner.next();
-        LocalDateTime dataHora = LocalDateTime.parse(dataHoraInput);
-
-        Atendimento atendimento = new Atendimento(clientes.get(clienteIndex), servicos.get(servicoIndex), dataHora);
-        atendimentos.add(atendimento);
-        System.out.println("Atendimento agendado com sucesso!");
+        try {
+            LocalDateTime dataHora = LocalDateTime.parse(dataHoraInput);
+            Atendimento atendimento = new Atendimento(clientes.get(clienteIndex), servicos.get(servicoIndex), dataHora);
+            atendimentos.add(atendimento);
+            System.out.println("Atendimento agendado com sucesso!");
+        } catch (DateTimeParseException e) {
+            System.out.println("Formato de data e hora inválido. Use o formato AAAA-MM-DDTHH:MM.");
+        }
     }
 }
