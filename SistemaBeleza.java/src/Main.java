@@ -66,7 +66,7 @@ public class Main {
         String descricao = scanner.nextLine();
         System.out.print("Valor: ");
         double valor = scanner.nextDouble();
-        scanner.nextLine(); // Consumir nova linha
+        scanner.nextLine();
 
         Servico servico = new Servico(nome, descricao, valor);
         servicos.add(servico);
@@ -101,7 +101,7 @@ public class Main {
             return;
         }
 
-        System.out.print("Data e Hora (AAAA-MM-DDTHH:MM): ");
+        System.out.print("Data e Hora (DD-MM-AAAA-HH:MM): ");
         String dataHoraInput = scanner.next();
         try {
             LocalDateTime dataHora = LocalDateTime.parse(dataHoraInput);
@@ -109,7 +109,7 @@ public class Main {
             atendimentos.add(atendimento);
             System.out.println("Atendimento agendado com sucesso!");
         } catch (DateTimeParseException e) {
-            System.out.println("Formato de data e hora inválido. Use o formato AAAA-MM-DDTHH:MM.");
+            System.out.println("Formato de data e hora inválido. Use o formato DD-MM-AAAA-HH:MM.");
         }
     }
 }
